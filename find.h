@@ -4,7 +4,7 @@
 using namespace std;
 int find(int n) {
 	int count=0;
-	int num=sizeof(n)*8;
+	unsigned int flag=1;
 
 	if (n==0) {
 		return 0;
@@ -16,10 +16,11 @@ int find(int n) {
 		}	
 	}
 	else {
-		while (num!=0) {
-			if ((n&1)==1) count++;
-			n=n>>1;
-			num--;
+		while (flag) {
+			if (n&flag) {
+				count++;
+			}
+			flag=flag<<1;
 		}
 	}
 
